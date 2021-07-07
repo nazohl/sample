@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {background-color: rgb(236, 236, 236);}
+
+        .container {
+            width: 660px;
+            height: 90vh;
+            margin: auto;
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-80%);
+
+            background-color: white;
+            width: 600px;
+            padding: 16px 30px 30px 30px;
+            border-radius: 5px;
+            filter: drop-shadow(0px 4px 5px #0000002d);
+            text-align: center;
+
+            animation: 0.5s fadein forwards;
+        }
+
+        @keyframes fadein {
+            0%   {opacity: 0; transform: translateY(-85%);}
+            100% {opacity: 1; transform: translateY(-80%);}
+        }
+
+        h1 {margin: 21px 0px;}
+
+        hr {transform: translateY(-10px);}
+
+        h2 {
+            font-size: 14pt;
+            font-weight: 550;
+            color: red;
+        }
+
+        i {
+            font-size: 14pt;
+            font-weight: 550;
+            color: rgb(100, 100, 100);
+        }
+
+        p {
+            margin: 16px 0px;
+            font-size: 14pt;
+        }
+
+        .larger-number {
+            font-size: 16pt;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            filter: drop-shadow(0px 4px 5px #0000003b);
+        }
+
+        a {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML -->
+    <div class="container">
+        <div class="box">
+            <h1>assignment</h1>
+            <hr>
+        
+            
+            <i id="italic">Enter two numbers and see which is greater</i>
+            <p class="result">
+                <b    id="largerNumber" class="larger-number">--</b>
+                <span id="operator"> &gt; </span>
+                <span id="smallerNumber" class="smaller-number">--</span>
+            </p>
+            <a href="#" onload="runPrompt()" onclick="runPrompt()">Click here</a>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script>
+        //Page element variables
+
+        function runPrompt() {
+         var largerNumber = document.getElementById("largerNumber");
+        var smallerNumber = document.getElementById("smallerNumber");
+            var firstInput = parseInt(prompt("Input a number"));
+            var secondInput = parseInt(prompt("Input another number"));
+            var italic = document.getElementById("italic");
+          var notNumber = "Please enter valid numbers!";
+        var instructions = "Enter two numbers and see which is greater" ;
+
+            // TEST IF VALID NUMBER
+            if(isNaN(firstInput) == true || isNaN(secondInput) == true) { 
+                italic.innerText = notNumber;
+                italic.style.color = "red";
+            } else {
+                italic.innerText = instructions;
+                italic.style.color = "black";
+                if (firstInput == secondInput) {
+                    document.getElementById("operator").innerText = "=";
+                    largerNumber.innerHTML  = (firstInput);
+                    smallerNumber.innerHTML = (secondInput); 
+                } else if (firstInput > secondInput) {
+                    largerNumber.innerHTML  = (firstInput);
+                    smallerNumber.innerHTML = (secondInput);
+                } else {
+                    largerNumber.innerHTML  = (secondInput);
+                    smallerNumber.innerHTML = (firstInput);
+            };
+            }         
+      
+
+        }
+    </script>
+
+</body>
+</html>
